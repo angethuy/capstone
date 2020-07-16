@@ -15,14 +15,15 @@ import (
 type ShopRecord struct {
 	airtable.Record // provides ID, CreatedTime
 	Fields          struct {
-		Name      string `json:"name"`
-		Image     string `json:"image_url"`
-		Address1  string `json:"location_display_address_001"`
-		Address2  string `json:"location_display_address_002"`
-		Address3  string `json:"location_display_address_003,omitempty"`
-		Phone     string `json:"display_phone"`
-		Latitude  string `json:"coordinates_latitude"`
-		Longitude string `json:"coordinates_longitude"`
+		Name      string   `json:"name"`
+		Image     string   `json:"image_url"`
+		Address1  string   `json:"location_display_address_001"`
+		Address2  string   `json:"location_display_address_002"`
+		Address3  string   `json:"location_display_address_003,omitempty"`
+		Phone     string   `json:"display_phone"`
+		Latitude  string   `json:"coordinates_latitude"`
+		Longitude string   `json:"coordinates_longitude"`
+		Flavors   []string `json:"flavors"`
 	}
 }
 
