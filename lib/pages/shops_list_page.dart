@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
 import 'package:pagotometer/models/src/shop.dart';
+import 'package:pagotometer/pages/shop_detail_page.dart';
 import 'package:flutter/material.dart';
 
 Future<List<Shop>> fetchShops(http.Client client) async {
@@ -52,8 +53,14 @@ class ShopsList extends StatelessWidget {
         debugPrint(
             '${shops[index].fields.coordinatesLatitude}, ${shops[index].fields.coordinatesLongitude} ');
         return ListTile(
-          title: Text('${index + 1}: ${shops[index].fields.name}'),
-        );
+            title: Text('${index + 1}: ${shops[index].fields.name}'),
+            subtitle: Text('${shops[index].fields.flavors[0]}'),
+            onTap: () {
+              Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (context) => ShopDetailPage(shops[index])));
+            });
       },
     );
   }
