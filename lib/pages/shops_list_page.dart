@@ -26,6 +26,7 @@ class ShopsListPage extends StatelessWidget {
       // appBar: AppBar(
       //   title: Text(title),
       // ),
+      backgroundColor: Theme.of(context).primaryColor,
       body: FutureBuilder<List<Shop>>(
         future: fetchShops(http.Client()),
         builder: (context, snapshot) {
