@@ -3,6 +3,7 @@ import 'package:pagotometer/models/src/shop.dart';
 import 'package:pagotometer/style/pago_icons.dart';
 import 'package:pagotometer/style/styles.dart';
 import 'package:pagotometer/widgets/menu.dart';
+import 'package:pagotometer/widgets/compass_sheet.dart';
 
 class ShopDetailPage extends StatefulWidget {
   final Shop shop;
@@ -25,7 +26,6 @@ class _ShopDetailPageState extends State<ShopDetailPage> {
         color: Color(0xff344955),
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 10.0),
-          height: 56.0,
           child: Row(children: <Widget>[
             Spacer(),
             IconButton(
@@ -42,18 +42,47 @@ class _ShopDetailPageState extends State<ShopDetailPage> {
 
   showMenu() {
     showModalBottomSheet(
-        context: context,
-        builder: (BuildContext context) {
-          return Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20.0),
-                topRight: Radius.circular(20.0),
-              ),
-              color: AppColor.midnightPurple,
-            ),
-            child: Column(),
-          );
-        });
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) => Container(
+        height: MediaQuery.of(context).size.height * 0.75,
+        decoration: BoxDecoration(
+          color: AppColor.midnightPurple,
+          borderRadius: BorderRadius.only(
+            topLeft: const Radius.circular(25.0),
+            topRight: const Radius.circular(25.0),
+          ),
+        ),
+        child: CompassSheet(),
+      ),
+    );
   }
 }
+// builder: (BuildContext context) {
+//   return Container(
+//     decoration: BoxDecoration(
+//       borderRadius: BorderRadius.only(
+//         topLeft: Radius.circular(20.0),
+//         topRight: Radius.circular(20.0),
+//       ),
+//       color: AppColor.midnightPurple,
+//     ),
+//     child: Column(
+//       children: [
+//         Expanded(
+//           flex: 2,
+//           child: Container(
+//             color: Colors.green,
+//           ),
+//         ),
+//         Expanded(
+//           flex: 8,
+//           child: Container(
+//             color: Colors.yellow,
+//           ),
+//         ),
+//       ],
+//     ),
+//   );
+// });
