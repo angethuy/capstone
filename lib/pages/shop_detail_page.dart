@@ -4,6 +4,7 @@ import 'package:pagotometer/style/pago_icons.dart';
 import 'package:pagotometer/style/styles.dart';
 import 'package:pagotometer/widgets/menu.dart';
 import 'package:pagotometer/widgets/compass_sheet.dart';
+import 'package:geolocator/geolocator.dart';
 
 class ShopDetailPage extends StatefulWidget {
   final Shop shop;
@@ -15,6 +16,8 @@ class ShopDetailPage extends StatefulWidget {
 }
 
 class _ShopDetailPageState extends State<ShopDetailPage> {
+  Position _currentPosition;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,6 +44,7 @@ class _ShopDetailPageState extends State<ShopDetailPage> {
   }
 
   showMenu() {
+    _getCurrentLocation();
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -57,6 +61,22 @@ class _ShopDetailPageState extends State<ShopDetailPage> {
         child: CompassSheet(),
       ),
     );
+  }
+
+  _getCurrentLocation() {
+    final Geolocator geolocator = Geolocator()..forceAndroidLocationManager;
+
+    geolocator
+        .getCurrentPosition(desiredAccuracy: LocationAccuracy.best)
+        .then((Position position) {
+      setState(() {
+        _currentPosition = position;
+        print(
+            'Location: ${_currentPosition?.latitude}, ${_currentPosition?.longitude} ');
+      });
+    }).catchError((e) {
+      print(e);
+    });
   }
 }
 // builder: (BuildContext context) {

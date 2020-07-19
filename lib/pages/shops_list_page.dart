@@ -5,6 +5,7 @@ import 'dart:async';
 import 'package:pagotometer/models/src/shop.dart';
 import 'package:pagotometer/pages/shop_detail_page.dart';
 import 'package:flutter/material.dart';
+// import 'package:geolocator/geolocator.dart';
 
 Future<List<Shop>> fetchShops(http.Client client) async {
   final response = await client.get(
@@ -18,14 +19,15 @@ List<Shop> shopFromJson(String str) =>
     List<Shop>.from(json.decode(str).map((x) => Shop.fromJson(x)));
 
 class ShopsListPage extends StatelessWidget {
-  const ShopsListPage({Key key}) : super(key: key);
+  ShopsListPage({Key key}) : super(key: key);
+  // final Position position;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text(title),
-      // ),
+      appBar: AppBar(
+          // title: Text('position: ${position?.latitude}'),
+          ),
       backgroundColor: Theme.of(context).primaryColor,
       body: FutureBuilder<List<Shop>>(
         future: fetchShops(http.Client()),

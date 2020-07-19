@@ -1,6 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:pagotometer/bloc/location_bloc.dart';
 import 'package:pagotometer/style/pago_icons.dart';
 import 'package:pagotometer/style/styles.dart';
+// import '../widgets/location_stream_widget.dart';
 
 class CompassSheet extends StatefulWidget {
   CompassSheet({Key key}) : super(key: key);
@@ -34,7 +40,25 @@ class _CompassSheetState extends State<CompassSheet> {
         Expanded(
           flex: 8,
           child: Container(
-            color: Colors.yellow,
+            // color: Colors.yellow,
+            child: BlocBuilder<LocationBloc, LocationState>(
+              builder: (context, state) {
+                if (state is LocationInitial) {
+                  print('fetching location');
+                  return Center(child: Text('Fetching Location'));
+                }
+                if (state is LocationLoadSuccess) {
+                  print('location loaded succcess!!!');
+                  return Center(
+                    child: Text(
+                      'Location: (${state.position.latitude}, ${state.position.longitude})',
+                    ),
+                  );
+                }
+                print('nothing happening......');
+                return Center(child: CircularProgressIndicator());
+              },
+            ),
           ),
         ),
       ],
