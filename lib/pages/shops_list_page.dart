@@ -54,7 +54,7 @@ class ShopsList extends StatelessWidget {
       itemCount: shops.length,
       itemBuilder: (context, index) {
         debugPrint(
-            '${shops[index].fields.coordinatesLatitude}, ${shops[index].fields.coordinatesLongitude} ');
+            'Item built: ${shops[index].fields.coordinatesLatitude}, ${shops[index].fields.coordinatesLongitude} ');
         return ListTile(
             title: Text('${index + 1}: ${shops[index].fields.name}'),
             subtitle: Text('${shops[index].fields.flavors[0]}'),

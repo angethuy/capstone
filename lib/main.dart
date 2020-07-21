@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:geolocator/lib/geolocator.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:pagotometer/bloc/location_bloc.dart';
 import 'package:pagotometer/bloc/location_bloc_observer.dart';

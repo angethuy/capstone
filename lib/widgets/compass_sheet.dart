@@ -9,7 +9,9 @@ import 'package:pagotometer/style/styles.dart';
 // import '../widgets/location_stream_widget.dart';
 
 class CompassSheet extends StatefulWidget {
-  CompassSheet({Key key}) : super(key: key);
+  final double latitude;
+  final double longitude;
+  CompassSheet({Key key, this.latitude, this.longitude}) : super(key: key);
 
   @override
   _CompassSheetState createState() => _CompassSheetState();
@@ -18,6 +20,10 @@ class CompassSheet extends StatefulWidget {
 class _CompassSheetState extends State<CompassSheet> {
   @override
   Widget build(BuildContext context) {
+    context
+        .bloc<LocationBloc>()
+        .add(ShopChanged(shopLat: widget.latitude, shopLong: widget.longitude));
+    print('${widget.latitude}, LONG: ${widget.longitude}');
     return Column(
       children: [
         Expanded(
@@ -44,15 +50,17 @@ class _CompassSheetState extends State<CompassSheet> {
             child: BlocBuilder<LocationBloc, LocationState>(
               builder: (context, state) {
                 if (state is LocationInitial) {
+                  // BlocProvider.of(context).setShop(latitude: widget.latitude);
                   print('fetching location');
                   return Center(child: Text('Fetching Location'));
                 }
-                if (state is LocationLoadSuccess) {
-                  print('location loaded succcess!!!');
+                if (state is DistanceChanged) {
+                  print('distance changed');
+                  // print('location loaded succcess!!!');
                   return Center(
-                    child: Text(
-                      'Location: (${state.position.latitude}, ${state.position.longitude})',
-                    ),
+                    child: Text('Distance: ${state.distance}'
+                        // 'Location: (${state.position.latitude}, ${state.position.longitude})',
+                        ),
                   );
                 }
                 print('nothing happening......');

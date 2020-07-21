@@ -17,6 +17,7 @@ class ShopDetailPage extends StatefulWidget {
 
 class _ShopDetailPageState extends State<ShopDetailPage> {
   Position _currentPosition;
+  double _distance;
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +59,9 @@ class _ShopDetailPageState extends State<ShopDetailPage> {
             topRight: const Radius.circular(25.0),
           ),
         ),
-        child: CompassSheet(),
+        child: CompassSheet(
+            latitude: double.parse(widget.shop.fields.coordinatesLatitude),
+            longitude: double.parse(widget.shop.fields.coordinatesLongitude)),
       ),
     );
   }
