@@ -10,6 +10,7 @@ class GeoUtils {
   }
 
   // return bearing between a starting point and end point
+  // code modified from https://github.com/a14n/dart-geo/blob/master/lib/geo.dart
   static num getBearing(
       double startLat, double startLong, double endLat, double endLong) {
     // assert(startLat != null);
