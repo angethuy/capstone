@@ -1,22 +1,167 @@
 <?xml version="1.0"?>
-<gpx version="1.1" creator="Xcode">
-    
-    <!--
-     Provide one or more waypoints containing a latitude/longitude pair. If you provide one
-     waypoint, Xcode will simulate that specific location. If you provide multiple waypoints,
-     Xcode will simulate a route visiting each waypoint.
-     -->
-    <wpt lat="37.331705" lon="-122.030237">
-        <name>Cupertino</name>
-        
-        <!--
-         Optionally provide a time element for each waypoint. Xcode will interpolate movement
-         at a rate of speed based on the time elapsed between each waypoint. If you do not provide
-         a time element, then Xcode will use a fixed rate of speed.
-         
-         Waypoints must be sorted by time in ascending order.
-         -->
-        <time>2014-09-24T14:55:37Z</time>
-    </wpt>
-    
+<gpx version="1.1" creator="gpxgenerator.com">
+<wpt lat="47.83676581359424" lon="-122.28210760084117">
+    <ele>149.31</ele>
+    <time>2020-07-23T03:06:39Z</time>
+</wpt>
+<wpt lat="47.83731313827401" lon="-122.28077722516979">
+    <ele>153.07</ele>
+    <time>2020-07-23T03:06:56Z</time>
+</wpt>
+<wpt lat="47.83786045718016" lon="-122.27931810346568">
+    <ele>149.28</ele>
+    <time>2020-07-23T03:07:14Z</time>
+</wpt>
+<wpt lat="47.83866702188672" lon="-122.27781606641734">
+    <ele>144.62</ele>
+    <time>2020-07-23T03:07:35Z</time>
+</wpt>
+<wpt lat="47.83909910496457" lon="-122.27661443677867">
+    <ele>138.94</ele>
+    <time>2020-07-23T03:07:50Z</time>
+</wpt>
+<wpt lat="47.83955998961459" lon="-122.27541280714">
+    <ele>132.99</ele>
+    <time>2020-07-23T03:08:05Z</time>
+</wpt>
+<wpt lat="47.8405681605126" lon="-122.27403951612438">
+    <ele>122.82</ele>
+    <time>2020-07-23T03:08:27Z</time>
+</wpt>
+<wpt lat="47.84120185790648" lon="-122.27300954786266">
+    <ele>117.94</ele>
+    <time>2020-07-23T03:08:42Z</time>
+</wpt>
+<wpt lat="47.84174913579007" lon="-122.27219415632213">
+    <ele>113.57</ele>
+    <time>2020-07-23T03:08:54Z</time>
+</wpt>
+<wpt lat="47.84246922947226" lon="-122.27150751081432">
+    <ele>118.56</ele>
+    <time>2020-07-23T03:09:08Z</time>
+</wpt>
+<wpt lat="47.84301649398564" lon="-122.27086378065074">
+    <ele>116.80</ele>
+    <time>2020-07-23T03:09:19Z</time>
+</wpt>
+<wpt lat="47.84359255565719" lon="-122.27004838911022">
+    <ele>132.71</ele>
+    <time>2020-07-23T03:09:32Z</time>
+</wpt>
+<wpt lat="47.844082203048174" lon="-122.26927591291393">
+    <ele>124.93</ele>
+    <time>2020-07-23T03:09:43Z</time>
+</wpt>
+<wpt lat="47.844629450545014" lon="-122.26867509809459">
+    <ele>110.74</ele>
+    <time>2020-07-23T03:09:54Z</time>
+</wpt>
+<wpt lat="47.845291900316596" lon="-122.26785970655406">
+    <ele>109.43</ele>
+    <time>2020-07-23T03:10:08Z</time>
+</wpt>
+<wpt lat="47.84555111748945" lon="-122.26738763776744">
+    <ele>110.07</ele>
+    <time>2020-07-23T03:10:14Z</time>
+</wpt>
+<wpt lat="47.845291900316596" lon="-122.26717306104625">
+    <ele>107.20</ele>
+    <time>2020-07-23T03:10:18Z</time>
+</wpt>
+<wpt lat="47.8451456400554" lon="-122.26730180707897">
+    <ele>107.12</ele>
+    <time>2020-07-23T03:10:20Z</time>
+</wpt>
+<wpt lat="47.8447568107708" lon="-122.26760221448863">
+    <ele>107.33</ele>
+    <time>2020-07-23T03:10:27Z</time>
+</wpt>
+<wpt lat="47.844324774813884" lon="-122.26824594465221">
+    <ele>107.81</ele>
+    <time>2020-07-23T03:10:37Z</time>
+</wpt>
+<wpt lat="47.843820728316125" lon="-122.26888967481578">
+    <ele>124.51</ele>
+    <time>2020-07-23T03:10:48Z</time>
+</wpt>
+<wpt lat="47.84334547998936" lon="-122.269469031963">
+    <ele>130.71</ele>
+    <time>2020-07-23T03:10:58Z</time>
+</wpt>
+<wpt lat="47.842985440479445" lon="-122.27006984678233">
+    <ele>120.43</ele>
+    <time>2020-07-23T03:11:06Z</time>
+</wpt>
+<wpt lat="47.842538988016656" lon="-122.27067066160167">
+    <ele>116.71</ele>
+    <time>2020-07-23T03:11:15Z</time>
+</wpt>
+<wpt lat="47.84219334476146" lon="-122.27109981504405">
+    <ele>113.07</ele>
+    <time>2020-07-23T03:11:22Z</time>
+</wpt>
+<wpt lat="47.8418188953028" lon="-122.27157188383067">
+    <ele>113.56</ele>
+    <time>2020-07-23T03:11:30Z</time>
+</wpt>
+<wpt lat="47.84109879259325" lon="-122.2722799870106">
+    <ele>121.30</ele>
+    <time>2020-07-23T03:11:44Z</time>
+</wpt>
+<wpt lat="47.840709932973894" lon="-122.27300954786266">
+    <ele>118.49</ele>
+    <time>2020-07-23T03:11:54Z</time>
+</wpt>
+<wpt lat="47.84003302223898" lon="-122.27408243146861">
+    <ele>124.68</ele>
+    <time>2020-07-23T03:12:10Z</time>
+</wpt>
+<wpt lat="47.83978818001088" lon="-122.27449012723888">
+    <ele>128.01</ele>
+    <time>2020-07-23T03:12:16Z</time>
+</wpt>
+<wpt lat="47.83941371319165" lon="-122.27504802671397">
+    <ele>128.94</ele>
+    <time>2020-07-23T03:12:24Z</time>
+</wpt>
+<wpt lat="47.8390824518293" lon="-122.27562738386119">
+    <ele>134.72</ele>
+    <time>2020-07-23T03:12:32Z</time>
+</wpt>
+<wpt lat="47.838751188351836" lon="-122.27627111402477">
+    <ele>136.10</ele>
+    <time>2020-07-23T03:12:41Z</time>
+</wpt>
+<wpt lat="47.8383335053003" lon="-122.27693630186046">
+    <ele>138.63</ele>
+    <time>2020-07-23T03:12:51Z</time>
+</wpt>
+<wpt lat="47.8380454460642" lon="-122.2775371166798">
+    <ele>139.69</ele>
+    <time>2020-07-23T03:12:59Z</time>
+</wpt>
+<wpt lat="47.83768536977003" lon="-122.27826667753185">
+    <ele>144.22</ele>
+    <time>2020-07-23T03:13:09Z</time>
+</wpt>
+<wpt lat="47.83738290375172" lon="-122.27906061140025">
+    <ele>149.12</ele>
+    <time>2020-07-23T03:13:19Z</time>
+</wpt>
+<wpt lat="47.83706603269847" lon="-122.27981162992442">
+    <ele>149.81</ele>
+    <time>2020-07-23T03:13:28Z</time>
+</wpt>
+<wpt lat="47.83679236977695" lon="-122.28062702146495">
+    <ele>151.30</ele>
+    <time>2020-07-23T03:13:38Z</time>
+</wpt>
+<wpt lat="47.836691546231485" lon="-122.28112054792369">
+    <ele>152.17</ele>
+    <time>2020-07-23T03:13:43Z</time>
+</wpt>
+<wpt lat="47.83648989855281" lon="-122.28200031248058">
+    <ele>147.95</ele>
+    <time>2020-07-23T03:13:53Z</time>
+</wpt>
 </gpx>
