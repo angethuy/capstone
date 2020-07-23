@@ -22,8 +22,9 @@ class MyApp extends StatelessWidget {
     final appTitle = 'Pagotometer';
 
     return BlocProvider<LocationBloc>(
-        create: (context) =>
-            LocationBloc(geolocator: Geolocator())..add(LocationStarted()),
+        create: (context) => LocationBloc(geolocator: Geolocator())
+          ..add(LocationStarted())
+          ..add(CompassStarted()),
         child: MaterialApp(
             title: appTitle,
             home: PageContainer(title: appTitle),

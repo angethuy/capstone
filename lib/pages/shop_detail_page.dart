@@ -16,8 +16,8 @@ class ShopDetailPage extends StatefulWidget {
 }
 
 class _ShopDetailPageState extends State<ShopDetailPage> {
-  Position _currentPosition;
-  double _distance;
+  // Position _currentPosition;
+  // double _distance;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,7 @@ class _ShopDetailPageState extends State<ShopDetailPage> {
   }
 
   showMenu() {
-    _getCurrentLocation();
+    // _getCurrentLocation();
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -66,21 +66,21 @@ class _ShopDetailPageState extends State<ShopDetailPage> {
     );
   }
 
-  _getCurrentLocation() {
-    final Geolocator geolocator = Geolocator()..forceAndroidLocationManager;
+  // _getCurrentLocation() {
+  //   final Geolocator geolocator = Geolocator()..forceAndroidLocationManager;
 
-    geolocator
-        .getCurrentPosition(desiredAccuracy: LocationAccuracy.best)
-        .then((Position position) {
-      setState(() {
-        _currentPosition = position;
-        print(
-            'Location: ${_currentPosition?.latitude}, ${_currentPosition?.longitude} ');
-      });
-    }).catchError((e) {
-      print(e);
-    });
-  }
+  //   geolocator
+  //       .getCurrentPosition(desiredAccuracy: LocationAccuracy.best)
+  //       .then((Position position) {
+  //     setState(() {
+  //       _currentPosition = position;
+  //       print(
+  //           'Location: ${_currentPosition?.latitude}, ${_currentPosition?.longitude} ');
+  //     });
+  //   }).catchError((e) {
+  //     print(e);
+  //   });
+  // }
 }
 // builder: (BuildContext context) {
 //   return Container(

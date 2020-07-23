@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:pagotometer/utils/geo_utils.dart';
+import 'package:flutter_compass/flutter_compass.dart';
 
 @immutable
 abstract class LocationEvent {}
@@ -21,6 +23,13 @@ class ShopChanged extends LocationEvent {
   ShopChanged({@required this.shopLat, @required this.shopLong});
 }
 
+class CompassStarted extends LocationEvent {}
+
+class CompassChanged extends LocationEvent {
+  final double heading;
+  CompassChanged({@required this.heading});
+}
+
 @immutable
 abstract class LocationState {}
 
@@ -36,15 +45,24 @@ class LocationLoadSuccess extends LocationState {
 
 class DistanceChanged extends LocationState {
   final double distance;
+  final num bearing;
+  final double heading;
 
-  DistanceChanged({this.distance});
+  DistanceChanged({this.distance, this.bearing, this.heading});
+}
+
+class CompassHeading extends LocationState {
+  final double heading;
+  CompassHeading({this.heading});
 }
 
 class LocationBloc extends Bloc<LocationEvent, LocationState> {
   final Geolocator _geolocator;
   StreamSubscription _locationSubscription;
+  StreamSubscription _compassSubscription;
   double _latitude;
   double _longitude;
+  double _heading;
 
   LocationBloc({@required Geolocator geolocator})
       : assert(geolocator != null),
@@ -57,7 +75,20 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
   Stream<LocationState> mapEventToState(
     LocationEvent event,
   ) async* {
-    if (event is ShopChanged) {
+    // await _simpleCompass.listen().then((data) {
+    //   return HeadingChanged(heading: data);
+    // });
+    // if (event is HeadingChanged) {
+    //   yield CurrentHeading(event.heading);
+    // }
+    if (event is CompassStarted) {
+      _compassSubscription?.cancel();
+      _compassSubscription = FlutterCompass.events
+          .listen((double heading) => add(CompassChanged(heading: heading)));
+    } else if (event is CompassChanged) {
+      _heading = event.heading;
+      // yield CompassHeading(heading: event.heading);
+    } else if (event is ShopChanged) {
       print('SHOP CHANGED!');
       _latitude = event.shopLat;
       _longitude = event.shopLong;
@@ -71,12 +102,24 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
           );
     } else if (event is LocationChanged) {
       yield LocationLoadSuccess(position: event.position);
+      // _headingSubscription?.cancel();
+      // await _simpleCompass.listen().then((value) => add(
+      //   HeadingChanged(heading: value),
+      // ));
+
+      // _simple
+      // _headingSubscription = _flutterCompass.streamCompass.;
+
       if (_latitude != null && _longitude != null) {
         print('***distance changed detected!!');
         double currentDistance = await _calculateDistance(event);
         // double current_distance = _geolocator.distanceBetween(_latitude,
         //     _longitude, event.position.latitude, event.position.longitude);
-        yield DistanceChanged(distance: currentDistance);
+        num currentBearing = _calculateBearing(event);
+        yield DistanceChanged(
+            distance: currentDistance,
+            bearing: currentBearing,
+            heading: _heading);
         // print('curr distance: ${currentDistance}');
       } //shop page
     }
@@ -93,9 +136,15 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
     return distance;
   }
 
+  num _calculateBearing(event) {
+    return GeoUtils.getBearing(_latitude, _longitude, event.position.latitude,
+        event.position.longitude);
+  }
+
   @override
   Future<void> close() {
     _locationSubscription?.cancel();
+    _compassSubscription?.cancel();
     return super.close();
   }
 }

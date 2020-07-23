@@ -6,6 +6,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:pagotometer/bloc/location_bloc.dart';
 import 'package:pagotometer/style/pago_icons.dart';
 import 'package:pagotometer/style/styles.dart';
+import 'package:pagotometer/widgets/compass.dart';
 // import '../widgets/location_stream_widget.dart';
 
 class CompassSheet extends StatefulWidget {
@@ -47,26 +48,7 @@ class _CompassSheetState extends State<CompassSheet> {
           flex: 8,
           child: Container(
             // color: Colors.yellow,
-            child: BlocBuilder<LocationBloc, LocationState>(
-              builder: (context, state) {
-                if (state is LocationInitial) {
-                  // BlocProvider.of(context).setShop(latitude: widget.latitude);
-                  print('fetching location');
-                  return Center(child: Text('Fetching Location'));
-                }
-                if (state is DistanceChanged) {
-                  print('distance changed');
-                  // print('location loaded succcess!!!');
-                  return Center(
-                    child: Text('Distance: ${state.distance}'
-                        // 'Location: (${state.position.latitude}, ${state.position.longitude})',
-                        ),
-                  );
-                }
-                print('nothing happening......');
-                return Center(child: CircularProgressIndicator());
-              },
-            ),
+            child: Compass(),
           ),
         ),
       ],
