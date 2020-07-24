@@ -21,6 +21,13 @@ class GeoUtils {
     final y = sin(dLng) * cos(degToRad(endLat));
     final x = cos(degToRad(startLat)) * sin(degToRad(endLat)) -
         sin(degToRad(startLat)) * cos(degToRad(endLat)) * cos(dLng);
-    return radToDeg(atan2(y, x));
+    double trueBearing = radToDeg(atan2(y, x));
+    return (trueBearing + 360 + 180) % 360;
+    // if (trueBearing < 0) {
+      
+    //   return (trueBearing + 360);
+    // } else {
+    //   return trueBearing;
+    // }
   }
 }

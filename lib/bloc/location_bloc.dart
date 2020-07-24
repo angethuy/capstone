@@ -75,12 +75,6 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
   Stream<LocationState> mapEventToState(
     LocationEvent event,
   ) async* {
-    // await _simpleCompass.listen().then((data) {
-    //   return HeadingChanged(heading: data);
-    // });
-    // if (event is HeadingChanged) {
-    //   yield CurrentHeading(event.heading);
-    // }
     if (event is CompassStarted) {
       _compassSubscription?.cancel();
       _compassSubscription = FlutterCompass.events
@@ -102,16 +96,7 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
           );
     } else if (event is LocationChanged) {
       yield LocationLoadSuccess(position: event.position);
-      // _headingSubscription?.cancel();
-      // await _simpleCompass.listen().then((value) => add(
-      //   HeadingChanged(heading: value),
-      // ));
-
-      // _simple
-      // _headingSubscription = _flutterCompass.streamCompass.;
-
       if (_latitude != null && _longitude != null) {
-        print('***distance changed detected!!');
         double currentDistance = await _calculateDistance(event);
         // double current_distance = _geolocator.distanceBetween(_latitude,
         //     _longitude, event.position.latitude, event.position.longitude);
@@ -120,7 +105,6 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
             distance: currentDistance,
             bearing: currentBearing,
             heading: _heading);
-        // print('curr distance: ${currentDistance}');
       } //shop page
     }
   }
