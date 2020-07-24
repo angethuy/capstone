@@ -3,6 +3,7 @@ import 'package:pagotometer/models/src/shop.dart';
 import 'package:pagotometer/style/pago_icons.dart';
 import 'package:pagotometer/style/styles.dart';
 import 'package:pagotometer/widgets/menu.dart';
+import 'package:pagotometer/widgets/business_card.dart';
 import 'package:pagotometer/widgets/compass_sheet.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -22,12 +23,32 @@ class _ShopDetailPageState extends State<ShopDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.lightPurple,
-      appBar: AppBar(title: Text(widget.shop.fields.name)),
-      body: Menu(flavors: widget.shop.fields.flavors),
+      backgroundColor: AppColor.mutedPurple,
+      appBar: AppBar(
+          elevation: 0.0,
+          backgroundColor: Colors.transparent,
+          title: Text(widget.shop.fields.name,
+              style: TextStyle(
+                fontSize: 30,
+              ))),
+      body: Container(
+          child: Column(
+        children: <Widget>[
+          BusinessCard(shop: widget.shop),
+          Divider(
+            color: AppColor.lightPurple,
+            height: 20,
+            thickness: 2,
+            indent: 10,
+            endIndent: 10,
+          ),
+          Menu(flavors: widget.shop.fields.flavors),
+        ],
+      )),
+      // body: Menu(flavors: widget.shop.fields.flavors),
       bottomNavigationBar: BottomAppBar(
         elevation: 0,
-        color: Color(0xff344955),
+        color: AppColor.midnightPurple,
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 10.0),
           child: Row(children: <Widget>[

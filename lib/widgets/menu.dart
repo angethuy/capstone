@@ -7,16 +7,22 @@ class Menu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      padding: const EdgeInsets.all(8),
-      itemCount: flavors.length,
-      itemBuilder: (BuildContext context, int index) {
-        print('item: ${flavors[index]}');
-        return Container(
-          height: 50,
-          child: Text(flavors[index]),
-        );
-      },
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.4,
+      width: MediaQuery.of(context).size.width,
+      child: ListView.builder(
+          itemCount: flavors.length,
+          itemBuilder: (BuildContext context, int index) {
+            print('item: ${flavors[index]}');
+            return Container(
+              margin:
+                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+              child: Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: Text(flavors[index]),
+              ),
+            );
+          }),
       // separatorBuilder: (BuildContext context, int index) => const Divider(),
     );
   }
