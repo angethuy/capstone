@@ -5,6 +5,8 @@ class AppColor extends Color {
 
   static const midnightPurple = Color(0xFF000721);
   static const lightPurple = Color(0xFF6360A4);
+  static const mutedPurple = Color(0xFF333564);
+  static const mildPurple = Color(0xFF424586);
   static const highlightBlue = Color(0xFFB2FAED);
   static const highlightPink = Color(0xFFC810D8);
 

@@ -5,6 +5,7 @@ import 'dart:async';
 import 'package:pagotometer/models/src/shop.dart';
 import 'package:pagotometer/pages/shop_detail_page.dart';
 import 'package:flutter/material.dart';
+import 'package:pagotometer/style/styles.dart';
 // import 'package:geolocator/geolocator.dart';
 
 Future<List<Shop>> fetchShops(http.Client client) async {
@@ -55,15 +56,25 @@ class ShopsList extends StatelessWidget {
       itemBuilder: (context, index) {
         debugPrint(
             'Item built: ${shops[index].fields.coordinatesLatitude}, ${shops[index].fields.coordinatesLongitude} ');
-        return ListTile(
-            title: Text('${index + 1}: ${shops[index].fields.name}'),
-            subtitle: Text('${shops[index].fields.flavors[0]}'),
-            onTap: () {
-              Navigator.push(
-                  context,
-                  new MaterialPageRoute(
-                      builder: (context) => ShopDetailPage(shops[index])));
-            });
+        return Card(
+          color: AppColor.mutedPurple,
+          margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+          child: Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: ListTile(
+                title: Text(
+                  '${shops[index].fields.name}',
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
+                ),
+                subtitle: Text('${shops[index].fields.flavors[0]}'),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      new MaterialPageRoute(
+                          builder: (context) => ShopDetailPage(shops[index])));
+                }),
+          ),
+        );
       },
     );
   }
